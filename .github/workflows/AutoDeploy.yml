@@ -23,7 +23,7 @@ jobs:
           #Now we have got the access of EC2 and we will start the deploy .
             pwd &&
             ls &&
-            #cd /home &&
+            cd /home/ec2-user/ &&
             #ls
             git checkout main &&
             git fetch --all &&
