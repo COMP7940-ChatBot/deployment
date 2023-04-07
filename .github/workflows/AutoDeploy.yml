@@ -23,7 +23,7 @@ jobs:
             ls -lah
             hostname -a
             whoami
-            touch helloworld.txt
+       
 
     
    
