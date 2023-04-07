@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - uses: actions/checkout@v2 
+      - uses: actions/checkout@v3
       - name: Get Env and Deploy in EC2
         env:
             PRIVATE_KEY: ${{ secrets.AWS_PRIVATE_KEY  }}
@@ -22,7 +22,9 @@ jobs:
           
           #Now we have got the access of EC2 and we will start the deploy .
             pwd &&
+            echo "-----" 
             ls &&
+            echo "-----"
             cd /home/ec2-user/deployment &&
             #ls
             git checkout main &&
