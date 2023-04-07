@@ -21,8 +21,8 @@ jobs:
           ssh -o "StrictHostKeyChecking=no" -o "UserKnownHostsFile /dev/null" -i private_key ${USER_NAME}@${HOSTNAME}
           
           #Now we have got the access of EC2 and we will start the deploy .
-            cd deployment &&
-            git checkout main &&
-            git fetch --all &&
-            git reset --hard origin/main &&
-            git pull origin main
+            cd /home/ec2-user/deployment
+            #git checkout main &&
+            #git fetch --all &&
+            #git reset --hard origin/main &&
+            #git pull origin main
