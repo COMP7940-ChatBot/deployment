@@ -21,6 +21,8 @@ jobs:
           ssh -o "StrictHostKeyChecking=no" -o "UserKnownHostsFile /dev/null" -i private_key ${USER_NAME}@${HOSTNAME}
           
           #Now we have got the access of EC2 and we will start the deploy .
+            whoami
+            echo "-----" 
             pwd &&
             echo "-----" 
             ls &&
