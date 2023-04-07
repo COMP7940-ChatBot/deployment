@@ -27,14 +27,14 @@ jobs:
             echo "-----" 
             ls &&
             echo "-----"
-            #cd ~ &&
+            cd ~ &&
             #/home/ec2-user/deployment &&
             ls
             echo "-----"
-            git checkout main &&
-            git fetch --all &&
-            git reset --hard origin/main &&
-            git pull origin main
-            cd Docker/ &&
-            ls
-            echo "-----"
+            #git checkout main &&
+            #git fetch --all &&
+            #git reset --hard origin/main &&
+            #git pull origin main
+            #cd Docker/ &&
+            #ls
+            #echo "-----"
