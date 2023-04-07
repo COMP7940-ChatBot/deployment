@@ -17,13 +17,13 @@ jobs:
             USER_NAME : ${{ secrets.USER_NAME  }}
             
         run: |
-          echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
+          echo "$PRIVATE_KEY" > private_key && chmod 600 private_key && chmod 600 ec2-user
           ssh -o "StrictHostKeyChecking=no" -o "UserKnownHostsFile /dev/null" -i private_key ${USER_NAME}@${HOSTNAME}
           
           #Now we have got the access of EC2 and we will start the deploy .
             pwd &&
             ls &&
-            sudo sh cd /home/ec2-user/deployment &&
+            cd /home/ec2-user/deployment &&
             #ls
             git checkout main &&
             git fetch --all &&
