@@ -9,35 +9,22 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - uses: actions/checkout@v3
-      - name: Get Env and Deploy in EC2
+      - name: Execute SSH commmands on remote server
+        uses: JimCronqvist/action-ssh@master
         env:
-            PRIVATE_KEY: ${{ secrets.AWS_PRIVATE_KEY  }}
-            HOSTNAME : ${{ secrets.HOSTNAME  }}
-            USER_NAME : ${{ secrets.USER_NAME  }}
-            
-        run: |
-          echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
-          ssh -o "StrictHostKeyChecking=no" -o "UserKnownHostsFile /dev/null" -i private_key ${USER_NAME}@${HOSTNAME}
-          
-          #Now we have got the access of EC2 and we will start the deploy .
+          PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
+          HOSTNAME: ${{ secrets.HOST_DNS }}
+          USER_NAME: ${{ secrets.USERNAME }}
+        with:
+          hosts: '${USER_NAME}@${HOSTNAME}'
+          privateKey: ${{ secrets.PRIVATE_KEY }}
+          debug: false
+          command: |
             ls -lah
             hostname -a
             whoami
-            echo "-----" 
-            pwd &&
-            echo "-----" 
-            ls &&
-            echo "-----"
-            cd ~ &&
-            #/home/ec2-user/deployment &&
-            ls
-            echo "-----"
-            #git checkout main &&
-            #git fetch --all &&
-            #git reset --hard origin/main &&
-            #git pull origin main
-            #cd Docker/ &&
-            #ls
-            #echo "-----"
+            touch helloworld.txt
+
+    
+   
      
